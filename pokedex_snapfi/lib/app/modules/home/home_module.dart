@@ -1,12 +1,5 @@
-import 'package:pokedex_snapfi/app/modules/home/data/repositories/pokemon_repository_impl.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/use_cases/get_pokemons_use_case.dart';
-import 'package:pokedex_snapfi/app/modules/home/infra/remote/pokemon_datasource_impl.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/details/details_controller.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/details/details_page.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/home/home_controller.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/home/home_page.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/stores/pokemons_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class HomeModule extends Module {
   @override

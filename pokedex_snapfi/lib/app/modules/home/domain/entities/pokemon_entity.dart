@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/enums/stats.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/enums/types.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class PokemonEntity extends Equatable {
   final int id;

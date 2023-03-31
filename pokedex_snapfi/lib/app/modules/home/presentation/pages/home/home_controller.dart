@@ -1,6 +1,5 @@
-import 'package:pokedex_snapfi/app/commons/domain/enums/store_state.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/use_cases/get_pokemons_use_case.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/stores/pokemons_store.dart';
+import 'package:pokedex_snapfi/app/commons/commons.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class HomeController {
   final PokemonsStore store;
@@ -17,18 +16,14 @@ class HomeController {
     try {
       store.data = await getPokemonsUseCase();
       store.state = StoreState.completed;
-    } on Exception catch (e) {
-      store.exception = e;
-      store.error = e.toString();
+    } on Failure catch (e) {
       store.state = StoreState.error;
+      store.exception = e;
+      store.error = e.message;
+    } catch (e) {
+      store.state = StoreState.error;
+      store.exception = e as Exception;
+      store.error = e.toString();
     }
-  }
-
-  nextPokemon() {
-    if (store.indexSelected + 1 < store.data!.length) store.indexSelected++;
-  }
-
-  previousPokemon() {
-    if (store.indexSelected > 0) store.indexSelected--;
   }
 }

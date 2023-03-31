@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/entities/pokemon_entity.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/details/widgets/custom_divider.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class BaseStats extends StatelessWidget {
   final List<BaseStatPokemonEntity> stats;

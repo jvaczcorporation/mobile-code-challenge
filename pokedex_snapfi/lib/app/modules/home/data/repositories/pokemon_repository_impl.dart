@@ -1,7 +1,5 @@
-import 'package:pokedex_snapfi/app/modules/home/data/datasources/pokemon_datasource.dart';
-import 'package:pokedex_snapfi/app/modules/home/data/mappers/pokemon_mapper.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/entities/pokemon_entity.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/repositories/pokemon_repository.dart';
+import 'package:pokedex_snapfi/app/commons/commons.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class PokemonRepositoryImpl implements PokemonRepository {
   final PokemonDatasource datasource;
@@ -12,14 +10,15 @@ class PokemonRepositoryImpl implements PokemonRepository {
 
   @override
   Future<PokemonEntity> getPokemon({required int id}) async {
+    final model = await datasource.getPokemonRemote(id: id);
     try {
-      final model = await datasource.getPokemonRemote(id: id);
-
       final pokemonEntity = PokemonMapper.toEntity(model);
 
       return pokemonEntity;
-    } catch (_) {
-      throw Exception(); //TODO
+    } catch (e) {
+      throw FailureRepository(
+        message: e.toString(),
+      );
     }
   }
 }

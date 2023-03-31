@@ -1,4 +1,4 @@
-import 'package:pokedex_snapfi/app/modules/home/presentation/stores/pokemons_store.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class DetailsController {
   final PokemonsStore store;

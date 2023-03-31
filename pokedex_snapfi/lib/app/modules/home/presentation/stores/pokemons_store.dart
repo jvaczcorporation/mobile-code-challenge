@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:pokedex_snapfi/app/commons/presentation/stores/state_store.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_snapfi/app/commons/commons.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class PokemonsStore extends StateStore<List<PokemonEntity>> {
   final Rx<int> _indexSelected = Rx<int>(0);

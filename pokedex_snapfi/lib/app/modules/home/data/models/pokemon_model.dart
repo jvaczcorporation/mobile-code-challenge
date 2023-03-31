@@ -1,6 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/enums/stats.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/enums/types.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 part 'pokemon_model.g.dart';
 

@@ -1,5 +1,4 @@
-import 'package:pokedex_snapfi/app/modules/home/domain/entities/pokemon_entity.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/repositories/pokemon_repository.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 abstract class GetPokemonsUseCase {
   Future<List<PokemonEntity>> call();

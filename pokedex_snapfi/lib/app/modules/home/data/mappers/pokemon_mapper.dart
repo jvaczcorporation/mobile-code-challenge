@@ -1,5 +1,4 @@
-import 'package:pokedex_snapfi/app/modules/home/data/models/pokemon_model.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class PokemonMapper {
   static PokemonEntity toEntity(PokemonModel model) => PokemonEntity(

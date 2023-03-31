@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/entities/pokemon_entity.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/details/details_controller.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/details/widgets/about_section.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/details/widgets/header_details.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/details/widgets/base_stats.dart';
-import 'package:pokedex_snapfi/app/modules/home/presentation/pages/details/widgets/button_navigator.dart';
+import 'package:pokedex_snapfi/app/commons/commons.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({super.key});
@@ -75,14 +71,7 @@ class _DetailPageState extends State<DetailPage> {
           width: double.maxFinite,
           decoration: BoxDecoration(
             color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                blurRadius: 3,
-                offset: const Offset(0, 1),
-                spreadRadius: 1,
-              )
-            ],
+            boxShadow: AppTheme.boxShadowContainer,
             borderRadius: BorderRadius.circular(
               8.0,
             ),

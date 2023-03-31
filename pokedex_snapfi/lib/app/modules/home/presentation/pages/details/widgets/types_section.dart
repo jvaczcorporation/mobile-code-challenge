@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_snapfi/app/commons/helpers/string_helper.dart';
-import 'package:pokedex_snapfi/app/modules/home/domain/entities/pokemon_entity.dart';
+import 'package:pokedex_snapfi/app/commons/commons.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 // ignore: depend_on_referenced_packages
 import 'package:collection/collection.dart';
 

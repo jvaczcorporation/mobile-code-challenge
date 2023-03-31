@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:pokedex_snapfi/app/modules/home/data/datasources/pokemon_datasource.dart';
-import 'package:pokedex_snapfi/app/modules/home/data/models/pokemon_model.dart';
+import 'package:pokedex_snapfi/app/commons/commons.dart';
+import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 class PokemonDatasourceImpl implements PokemonDatasource {
   final Dio dio;
@@ -19,8 +17,10 @@ class PokemonDatasourceImpl implements PokemonDatasource {
       final pokemonModel = PokemonModel.fromJson(result.data);
 
       return pokemonModel;
-    } catch (_) {
-      throw Exception(); //TODO
+    } catch (e) {
+      throw FailureDatasource(
+        message: e.toString(),
+      );
     }
   }
 }
