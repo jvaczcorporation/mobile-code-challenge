@@ -11,7 +11,7 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
       ),
-      title: 'Pokedéx',
+      title: 'Pokédex',
       routeInformationParser: Modular.routeInformationParser,
       routerDelegate: Modular.routerDelegate,
     );
