@@ -13,6 +13,9 @@ class AboutSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final abilities = pokemon.abilities;
+    abilities.sort((b, a) => a.slot.compareTo(b.slot));
+
     return Column(
       children: [
         Padding(
@@ -63,7 +66,7 @@ class AboutSection extends StatelessWidget {
             InfoItem(
               pokemon: pokemon,
               title: "Moves",
-              values: pokemon.abilities
+              values: abilities
                   .map(
                     (item) => item.ability.name,
                   )

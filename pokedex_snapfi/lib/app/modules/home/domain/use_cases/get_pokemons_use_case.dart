@@ -16,8 +16,6 @@ class GetPokemonsUseCaseImpl implements GetPokemonsUseCase {
     List<PokemonEntity> listPokemon = [];
     for (int i = offset; i <= limit; i++) {
       final pokemon = await repository.getPokemon(id: i);
-      pokemon.abilities.sort((b, a) => a.slot.compareTo(b.slot));
-
       listPokemon.add(pokemon);
     }
     return listPokemon;

@@ -14,6 +14,12 @@ class PokemonDatasourceImpl implements PokemonDatasource {
     try {
       final result = await dio.get("https://pokeapi.co/api/v2/pokemon/$id");
 
+      if (result.statusCode != 200) {
+        throw FailureDatasource(
+          message: Messages.FAILED_GET_DATA,
+        );
+      }
+
       final pokemonModel = PokemonModel.fromJson(result.data);
 
       return pokemonModel;
