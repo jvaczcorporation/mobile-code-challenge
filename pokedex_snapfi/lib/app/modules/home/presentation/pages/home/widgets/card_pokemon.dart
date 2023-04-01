@@ -47,38 +47,52 @@ class CardPokemon extends StatelessWidget {
               ),
             ),
             Positioned.fill(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 8.0,
-                  vertical: 4.0,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        const Expanded(
-                          child: SizedBox.shrink(),
-                        ),
-                        Text(
-                          '#${pokemon.id.toString().padLeft(3, '0')}',
-                          style: const TextStyle(
-                            fontSize: 8.0,
+              child: pokemon.isLoading
+                  ? LoaderItem(
+                      highlightColor: Colors.grey.withOpacity(0.5),
+                      baseColor: Colors.white,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: AppTheme.boxShadowContainer,
+                          borderRadius: BorderRadius.circular(
+                            8.0,
                           ),
                         ),
-                      ],
-                    ),
-                    Expanded(
-                      child: Image.network(
-                        pokemon.urlImage,
+                      ),
+                    )
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                        vertical: 4.0,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              const Expanded(
+                                child: SizedBox.shrink(),
+                              ),
+                              Text(
+                                '#${pokemon.id.toString().padLeft(3, '0')}',
+                                style: const TextStyle(
+                                  fontSize: 8.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Expanded(
+                            child: Image.network(
+                              pokemon.urlImage,
+                            ),
+                          ),
+                          Text(
+                            pokemon.name.capitalize(),
+                          ),
+                        ],
                       ),
                     ),
-                    Text(
-                      pokemon.name.capitalize(),
-                    ),
-                  ],
-                ),
-              ),
             ),
           ],
         ),

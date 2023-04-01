@@ -11,12 +11,36 @@ class DetailPage extends StatefulWidget {
   State<DetailPage> createState() => _DetailPageState();
 }
 
-class _DetailPageState extends State<DetailPage> {
+class _DetailPageState extends State<DetailPage>
+    with SingleTickerProviderStateMixin {
   final controller = Modular.get<DetailsController>();
+
+  late final AnimationController _animationController = AnimationController(
+    duration: const Duration(
+      milliseconds: 1000,
+    ),
+    vsync: this,
+  )..forward();
+
+  late final Animation<Offset> _offsetAnimation = Tween<Offset>(
+    begin: const Offset(0.5, 0.0),
+    end: const Offset(0.0, 0.0),
+  ).animate(
+    CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.decelerate,
+    ),
+  );
 
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   Color get color =>
@@ -79,7 +103,10 @@ class _DetailPageState extends State<DetailPage> {
           child: Column(
             children: [
               const SizedBox(
-                height: 56,
+                height: 48,
+              ),
+              TypesSection(
+                pokemon: pokemon,
               ),
               AboutSection(
                 pokemon: pokemon,
@@ -95,7 +122,7 @@ class _DetailPageState extends State<DetailPage> {
       );
 
   Widget get _buildImagePokemon => Positioned.fill(
-        top: MediaQuery.of(context).size.height * 0.1,
+        top: MediaQuery.of(context).size.height * 0.11,
         child: Align(
           alignment: Alignment.topCenter,
           child: Row(
@@ -104,20 +131,31 @@ class _DetailPageState extends State<DetailPage> {
               ButtonNavigator(
                 visible: controller.store.indexSelected > 0,
                 icon: Icons.arrow_back_ios_new_rounded,
-                onPressed: controller.previousPokemon,
+                onPressed: () {
+                  _animationController.reset();
+                  controller.previousPokemon();
+                  _animationController.forward();
+                },
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                child: Image.network(
-                  pokemon.urlImage,
-                  height: 200,
+                child: SlideTransition(
+                  position: _offsetAnimation,
+                  child: Image.network(
+                    pokemon.urlImage,
+                    height: 200,
+                  ),
                 ),
               ),
               ButtonNavigator(
                 visible: controller.store.indexSelected + 1 !=
                     controller.store.data!.length,
                 icon: Icons.arrow_forward_ios_rounded,
-                onPressed: controller.nextPokemon,
+                onPressed: () {
+                  _animationController.reset();
+                  controller.nextPokemon();
+                  _animationController.forward();
+                },
               )
             ],
           ),

@@ -23,6 +23,7 @@ class ButtonNavigator extends StatelessWidget {
           icon: Icon(
             icon,
             color: Colors.white,
+            size: 24,
           ),
         ),
       ),

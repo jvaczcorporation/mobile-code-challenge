@@ -13,10 +13,23 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final controller = Modular.get<HomeController>();
+  final _scrollController = ScrollController();
 
   @override
   void initState() {
-    controller.fetchPokemons();
+    controller.initialFetchPokemons();
+
+    // Setup the listener
+    _scrollController.addListener(() {
+      if (_scrollController.position.atEdge) {
+        bool isBottom = _scrollController.position.pixels != 0;
+        if (isBottom) {
+          if (controller.store.state == StoreState.completed) {
+            controller.aditionalFecthPokemons();
+          }
+        }
+      }
+    });
     super.initState();
   }
 
@@ -29,29 +42,33 @@ class _HomePageState extends State<HomePage> {
           "Pokédex",
           style: TextStyle(
             fontWeight: FontWeight.w700,
-            fontSize: 20.0,
+            fontSize: 24.0,
           ),
         ),
         leading: Center(
-          child: Image.asset(
-            "assets/pokeball.png",
-            height: 24.0,
-            width: 24.0,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              left: 24,
+            ),
+            child: Image.asset(
+              "assets/pokeball.png",
+              height: 24.0,
+              width: 24.0,
+            ),
           ),
         ),
         elevation: 0,
       ),
       backgroundColor: AppTheme.red,
       body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 4.0,
-          vertical: 24.0,
-        ),
+        padding: const EdgeInsets.all(4.0),
         child: Obx(
           () {
             if (controller.store.hasError) {
               return const Center(
-                child: Text("Error loading data!"),
+                child: Text(
+                  "Error loading data!",
+                ),
               );
             }
 
@@ -95,6 +112,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           child: GridView.builder(
+            controller: _scrollController,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
             ),

@@ -20,7 +20,9 @@ class TypesSection extends StatelessWidget {
         ...pokemon.types.mapIndexed(
           (index, type) => Padding(
             padding: EdgeInsets.only(
-              left: index != pokemon.types.length ? 24.0 : 0.0,
+              left: (pokemon.types.length > 1 && index != pokemon.types.length)
+                  ? 24.0
+                  : 0.0,
             ),
             child: Container(
               padding: const EdgeInsets.symmetric(

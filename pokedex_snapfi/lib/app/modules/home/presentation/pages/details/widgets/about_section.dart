@@ -33,7 +33,9 @@ class AboutSection extends StatelessWidget {
             InfoItem(
               pokemon: pokemon,
               title: "Weight",
-              values: [pokemon.weight.toString()],
+              values: [
+                "${(pokemon.weight / 10).toDouble().toStringAsFixed(1)} kg"
+              ],
               icon: Image.asset(
                 "assets/weight.png",
                 height: 16.0,
@@ -46,7 +48,9 @@ class AboutSection extends StatelessWidget {
             InfoItem(
               pokemon: pokemon,
               title: "Height",
-              values: [pokemon.height.toString()],
+              values: [
+                "${(pokemon.height / 10).toDouble().toStringAsFixed(1)} m"
+              ],
               icon: Image.asset(
                 "assets/height.png",
                 height: 16.0,
@@ -59,7 +63,11 @@ class AboutSection extends StatelessWidget {
             InfoItem(
               pokemon: pokemon,
               title: "Moves",
-              values: pokemon.abilities.map((e) => e.ability.name).toList(),
+              values: pokemon.abilities
+                  .map(
+                    (item) => item.ability.name,
+                  )
+                  .toList(),
             ),
           ],
         ),

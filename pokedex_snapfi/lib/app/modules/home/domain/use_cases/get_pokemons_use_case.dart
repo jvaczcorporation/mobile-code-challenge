@@ -1,7 +1,7 @@
 import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 abstract class GetPokemonsUseCase {
-  Future<List<PokemonEntity>> call();
+  Future<List<PokemonEntity>> call({int offset = 1, int limit = 20});
 }
 
 class GetPokemonsUseCaseImpl implements GetPokemonsUseCase {
@@ -12,9 +12,9 @@ class GetPokemonsUseCaseImpl implements GetPokemonsUseCase {
   });
 
   @override
-  Future<List<PokemonEntity>> call() async {
+  Future<List<PokemonEntity>> call({int offset = 1, int limit = 20}) async {
     List<PokemonEntity> listPokemon = [];
-    for (int i = 1; i <= 20; i++) {
+    for (int i = offset; i <= limit; i++) {
       final pokemon = await repository.getPokemon(id: i);
       pokemon.abilities.sort((b, a) => a.slot.compareTo(b.slot));
 

@@ -17,10 +17,13 @@ class HeaderDetails extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.centerRight,
-          child: Image.asset(
-            "assets/pokeball.png",
-            height: 208,
-            color: Colors.white.withOpacity(0.2),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              "assets/pokeball.png",
+              height: 208,
+              color: Colors.white.withOpacity(0.1),
+            ),
           ),
         ),
         Positioned(
@@ -34,6 +37,7 @@ class HeaderDetails extends StatelessWidget {
                   icon: const Icon(
                     Icons.arrow_back,
                     color: Colors.white,
+                    size: 32,
                   ),
                 ),
                 Text(
@@ -56,6 +60,7 @@ class HeaderDetails extends StatelessWidget {
                     style: const TextStyle(
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
+                      fontSize: 12.0,
                     ),
                   ),
                 ),

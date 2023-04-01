@@ -33,18 +33,21 @@ class InfoItem extends StatelessWidget {
                   const SizedBox(
                     width: 8.0,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ...values.map(
-                        (String value) => Text(
-                          value.capitalize(),
-                          style: const TextStyle(
-                            fontSize: 10.0,
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ...values.map(
+                          (String value) => Text(
+                            value.capitalize(),
+                            style: const TextStyle(
+                              fontSize: 10.0,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
                 ],
               ),

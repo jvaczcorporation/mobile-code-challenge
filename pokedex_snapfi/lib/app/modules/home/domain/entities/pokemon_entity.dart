@@ -9,6 +9,7 @@ class PokemonEntity extends Equatable {
   final List<BaseStatPokemonEntity> stats;
   final List<InfoAbilityPokemonEntity> abilities;
   final List<InfoTypePokemonEntity> types;
+  final bool isLoading;
 
   const PokemonEntity({
     required this.id,
@@ -18,6 +19,7 @@ class PokemonEntity extends Equatable {
     required this.stats,
     required this.abilities,
     required this.types,
+    this.isLoading = false,
   });
 
   String get urlImage =>
@@ -32,6 +34,7 @@ class PokemonEntity extends Equatable {
         stats,
         abilities,
         types,
+        isLoading,
       ];
 }
 
