@@ -68,6 +68,11 @@ class _HomePageState extends State<HomePage> {
               return const Center(
                 child: Text(
                   "Error loading data!",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 24.0,
+                    color: Colors.white,
+                  ),
                 ),
               );
             }

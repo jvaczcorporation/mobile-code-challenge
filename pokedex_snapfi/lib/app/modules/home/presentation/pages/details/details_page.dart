@@ -60,7 +60,13 @@ class _DetailPageState extends State<DetailPage>
               builder: (context) {
                 if (controller.store.hasError) {
                   return const Center(
-                    child: Text("Error loading data!"),
+                    child: Text(
+                      "Error loading data!",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 24.0,
+                      ),
+                    ),
                   );
                 }
 

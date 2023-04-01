@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:pokedex_snapfi/app/commons/domain/domain.dart';
+
 import 'package:pokedex_snapfi/app/modules/home/home.dart';
 
 import '../../../../../../mocks/mocks.dart';
